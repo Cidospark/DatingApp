@@ -244,6 +244,4 @@ paket-files/
 .idea/
 *.sln.iml
 
-DatingApp.API/DatingApp.db 
-
-
+DatingApp.API/DatingApp.db
