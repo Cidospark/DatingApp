@@ -245,3 +245,6 @@ paket-files/
 *.sln.iml
 
 DatingApp.API/DatingApp.db
+
+obj/Debug/netcoreapp2.1/DatingApp.API.assets.cache
+obj/Debug/netcoreapp2.1/DatingApp.API.csprojAssemblyReference.cache
