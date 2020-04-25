@@ -45,8 +45,8 @@ namespace DatingApp.API.Controllers
             return StatusCode(201);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Login(UserForLoginDto model)
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] UserForLoginDto model)
         {
             // comfirm login credentials and return user obj
             var userFromRepo = await _repo.Login(model.Username.ToLower(), model.Password);
@@ -72,7 +72,8 @@ namespace DatingApp.API.Controllers
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
             // describe the token in a descriptor obj
-            var tokenDescriptor = new SecurityTokenDescriptor{
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
                 Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.Now.AddDays(1),
                 SigningCredentials = creds
@@ -83,7 +84,8 @@ namespace DatingApp.API.Controllers
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
             // and write it into a reponse obj
-            return Ok(new {
+            return Ok(new
+            {
                 token = tokenHandler.WriteToken(token)
             });
         }
