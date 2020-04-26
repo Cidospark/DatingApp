@@ -18,6 +18,6 @@ constructor(private http: HttpClient) { }
           localStorage.setItem('token', user.token);
         }
       })
-    )
+    );
   }
 }
