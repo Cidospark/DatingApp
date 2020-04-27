@@ -9,7 +9,7 @@ export class AlertifyService {
 constructor() { }
 
   confirm(message: string, okCallback: () => any) {
-    alertify.confirm(message, function(e: any) {
+    alertify.confirm(message, function(e) {
       if (e) {
         okCallback();
       } else {}
@@ -21,15 +21,15 @@ constructor() { }
   }
 
   error(message: string) {
-    alertify.success(message);
+    alertify.error(message);
   }
 
   warning(message: string) {
-    alertify.success(message);
+    alertify.warning(message);
   }
 
   message(message: string) {
-    alertify.success(message);
+    alertify.message(message);
   }
 
 }

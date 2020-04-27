@@ -8,7 +8,7 @@ import { AlertifyService } from '../_services/alertify.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  @Input() valuesFromHome: any;
+  // @Input() valuesFromHome: any;
   @Output() cancelRegister = new EventEmitter();
   model: any = {};
 
