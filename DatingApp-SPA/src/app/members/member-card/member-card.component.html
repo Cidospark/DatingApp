@@ -1,0 +1,37 @@
+<div class="card border-0 shadow mb-5">
+  <div class="card-img-wrapper">
+    <img
+      class="card-img-top"
+      src="{{ user.photoUrl }}"
+      alt="{{ user.knownAs }}"
+    />
+    <ul class="list-inline member-icons animate text-center">
+      <li class="list-inline-item">
+        <button class="btn btn-primary" [routerLink]="['/members/', user.id]" >
+          <small><i class="fa fa-user"></i></small>
+        </button>
+      </li>
+      <li class="list-inline-item">
+        <button class="btn btn-primary">
+          <small><i class="fa fa-heart"></i></small>
+        </button>
+      </li>
+      <li class="list-inline-item">
+        <button class="btn btn-primary">
+          <small><i class="fa fa-envelope"></i></small>
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body p-1">
+    <h6 class="card-title text-center mb-1">
+      <span style="font-size: large;" class="text-dark">
+        <strong>{{ user.knownAs }}</strong> &nbsp;
+        <span class="text-white-50 badge badge-dark">{{ user.age }}</span>
+      </span>
+    </h6>
+    <p class="card-text text-info text-center">
+      <small><i class="fa fa-home"></i> {{ user.city }} City</small>
+    </p>
+  </div>
+</div>
