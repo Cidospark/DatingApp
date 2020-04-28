@@ -36,7 +36,6 @@ body{
   
   .member-tabset > .nav-tabs > li.active {
     border-bottom: 4px solid #772953;
-    font-weight: bold;
     position: relative;
   }
   
