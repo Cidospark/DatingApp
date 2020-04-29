@@ -27,6 +27,7 @@ import { MemberDetailResolver } from './_resolver/member-detail.resolver';
 import { MemberListResolver } from './_resolver/member-list.resolver';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { MemberEditResolver } from './_resolver/member-edit.resolver';
+import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 
 
 export function tokenGetter() {
@@ -34,6 +35,7 @@ export function tokenGetter() {
 }
 
 @NgModule({
+  // components added to project
   declarations: [
     AppComponent,
     NavComponent,
@@ -46,6 +48,7 @@ export function tokenGetter() {
     MemberDetiailComponent,
     MemberEditComponent
   ],
+  // third-party imported modules into/from nodemodules used in this project
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -62,6 +65,7 @@ export function tokenGetter() {
     TabsModule.forRoot(),
     NgxGalleryModule,
   ],
+  // services files
   providers: [
     AuthService,
     ErrorInterceptorProvider,
@@ -70,7 +74,8 @@ export function tokenGetter() {
     UserService,
     MemberDetailResolver,
     MemberListResolver,
-    MemberEditResolver
+    MemberEditResolver,
+    PreventUnsavedChanges
   ],
   bootstrap: [AppComponent],
 })
