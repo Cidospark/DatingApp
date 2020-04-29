@@ -18,7 +18,7 @@
 }
 
 .col-sm-4 .card{
-    border: 1px solid #f5f5f5;
+    border: 1px solid #f3f3f3;
 }
 
 .col-sm-4 .img-thumbnail{
@@ -27,8 +27,7 @@
 
 
 .tab-panel {
-    border: 1px solid #f5f5f5;
-    background-color: #fff !important;
+    border: 1px solid #f3f3f3;
 }
 
 .profile-title h1 strong {
