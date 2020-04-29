@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
+import { NgxGalleryModule } from 'ngx-gallery';
 
 
 import { AppComponent } from './app.component';
@@ -24,6 +25,9 @@ import { MemberCardComponent } from './members/member-card/member-card.component
 import { MemberDetiailComponent } from './members/member-detiail/member-detiail.component';
 import { MemberDetailResolver } from './_resolver/member-detail.resolver';
 import { MemberListResolver } from './_resolver/member-list.resolver';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { MemberEditResolver } from './_resolver/member-edit.resolver';
+import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 
 
 export function tokenGetter() {
@@ -31,43 +35,48 @@ export function tokenGetter() {
 }
 
 @NgModule({
-   declarations: [
-      AppComponent,
-      NavComponent,
-      HomeComponent,
-      RegisterComponent,
-      MemberListComponent,
-      ListsComponent,
-      MessagesComponent,
-      MemberCardComponent,
-      MemberDetiailComponent
-   ],
-   imports: [
-      BrowserModule,
-      HttpClientModule,
-      FormsModule,
-      BsDropdownModule.forRoot(),
-      RouterModule.forRoot(appRoutes),
-      JwtModule.forRoot({
-         config: {
-            tokenGetter: tokenGetter,
-            whitelistedDomains: ['localhost:5000'],
-            blacklistedRoutes: ['localhost:5000/api/auth']
-         }
-      }),
-      TabsModule.forRoot(),
-   ],
-   providers: [
-      AuthService,
-      ErrorInterceptorProvider,
-      AlertifyService,
-      AuthGuard,
-      UserService,
-      MemberDetailResolver,
-      MemberListResolver
-   ],
-   bootstrap: [
-      AppComponent
-   ]
+  // components added to project
+  declarations: [
+    AppComponent,
+    NavComponent,
+    HomeComponent,
+    RegisterComponent,
+    MemberListComponent,
+    ListsComponent,
+    MessagesComponent,
+    MemberCardComponent,
+    MemberDetiailComponent,
+    MemberEditComponent
+  ],
+  // third-party imported modules into/from nodemodules used in this project
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    BsDropdownModule.forRoot(),
+    RouterModule.forRoot(appRoutes),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ["localhost:5000"],
+        blacklistedRoutes: ["localhost:5000/api/auth"],
+      },
+    }),
+    TabsModule.forRoot(),
+    NgxGalleryModule,
+  ],
+  // services files
+  providers: [
+    AuthService,
+    ErrorInterceptorProvider,
+    AlertifyService,
+    AuthGuard,
+    UserService,
+    MemberDetailResolver,
+    MemberListResolver,
+    MemberEditResolver,
+    PreventUnsavedChanges
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
