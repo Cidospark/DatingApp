@@ -34,6 +34,7 @@ export class MemberMessagesComponent implements OnInit {
     this.newMessage.recipientId = this.recipientId;
     this.userServices.sendMessage(this.authService.decodedToken.nameid, this.newMessage)
     .subscribe((message: Message) => {
+      //debugger;
       this.messages.unshift(message);
       this.newMessage.content = '';
     }, error => {
