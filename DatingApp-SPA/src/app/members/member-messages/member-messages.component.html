@@ -31,12 +31,12 @@
           </span>
           <div class="chat-body">
             <div class="header">
-              <small class="text-muted float-right mr-2">
+              <small class="text-muted mr-2">
                 <i  class="fa fa-clock-o mr-2"></i> <span>{{message.messageSent | timeAgo}}</span>
                 <span *ngIf="!message.isRead" class="text-danger"> (unread)</span>
                 <span *ngIf="message.isRead" class="text-success"> (Read {{message.dateRead | timeAgo}})</span>
               </small>
-              <strong class="primary-font">
+              <strong class="primary-font float-right mr-2">
                 {{message.senderKnownAs}}
               </strong>
             </div>
@@ -46,5 +46,15 @@
 
       </li>
     </ul>
+    <div class="card-footer">
+      <form action="">
+        <div class="input-group">
+          <input type="text" class="form-control input-sm" placeholder="send a private message">
+          <div class="input-group-append">
+            <button class="btn btn-primary">Send</button>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
