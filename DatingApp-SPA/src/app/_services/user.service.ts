@@ -100,4 +100,16 @@ export class UserService {
       );
 
   }
+
+  getMessageThread(id: number, recipientId: number) {
+    return this.http.get<Message[]>(this.baseUrl + 'users/' + id + '/messages/thread/' + recipientId);
+  }
+
+  sendMessage(id: number, message: Message) {
+     //console.log(id + ' : ' + JSON.stringify(message));
+    const mss: any = this.http.post(this.baseUrl + 'users/' + id + '/messages/', message);
+    // console.log(mss);
+     return mss;
+  }
+
 }
