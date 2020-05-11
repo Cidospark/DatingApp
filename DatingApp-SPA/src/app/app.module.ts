@@ -72,7 +72,7 @@ export function tokenGetter() {
       config: {
         tokenGetter: tokenGetter,
         whitelistedDomains: ['localhost:5000'],
-        blacklistedRoutes: ['localhost:5000/api/auth'],
+        blacklistedRoutes: ['localhost:5000/api/auth/register'],
       },
     }),
     TabsModule.forRoot(),

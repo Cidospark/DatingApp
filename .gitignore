@@ -245,6 +245,6 @@ paket-files/
 *.sln.iml
 
 *.db
-DatingApp.API/.vscode
-DatingApp.API/obj
-DatingApp.API/bin
+../DatingApp.API/.vscode
+../DatingApp.API/obj
+../DatingApp.API/bin
