@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using DatingApp.API.Models;
 using Newtonsoft.Json;
 
@@ -15,22 +16,24 @@ namespace DatingApp.API.Data
 
         // read user seed from the json file
         public void SeedUser(){
-            var userData = System.IO.File.ReadAllText("Data/UserSeedData.json");
-           // foreach user record
-            var users = JsonConvert.DeserializeObject<List<User>>(userData);
-            foreach(var user in users){
-                // generate passwordhash and passwordsalt
-                byte[] passwordHash, passwordSalt;
-                CreatePasswordHash("password", out passwordHash, out passwordSalt);
-                // assign passwordhash and passwordsalt to the user record collected
-                user.PasswordHash = passwordHash;
-                user.PasswordSalt = passwordSalt;
-                user.Username = user.Username.ToLower();
+            if(!_context.Users.Any()){
+                var userData = System.IO.File.ReadAllText("Data/UserSeedData.json");
+            // foreach user record
+                var users = JsonConvert.DeserializeObject<List<User>>(userData);
+                foreach(var user in users){
+                    // generate passwordhash and passwordsalt
+                    byte[] passwordHash, passwordSalt;
+                    CreatePasswordHash("password", out passwordHash, out passwordSalt);
+                    // assign passwordhash and passwordsalt to the user record collected
+                    user.PasswordHash = passwordHash;
+                    user.PasswordSalt = passwordSalt;
+                    user.Username = user.Username.ToLower();
 
-                // add user to context object
-                _context.Add(user);
+                    // add user to context object
+                    _context.Add(user);
+                }
+                _context.SaveChanges();
             }
-            _context.SaveChanges();
         }
 
         private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
